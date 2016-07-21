@@ -6,6 +6,7 @@
     <style type="text/css">
         body{
             background: url("images/bg.jpg") repeat 0 0;
+            font-family:"Microsoft Sans Serif";
         }
         .container{
             width:1170px;
@@ -14,8 +15,8 @@
         }
         .note{
             width: 33.3%;
-            height: 150px;
-            margin: 10px 0;
+            min-height: 150px;
+            padding: 10px 0;
         }
         .avatar{
             position: relative;
@@ -26,7 +27,6 @@
             height: 50px;
             border-radius: 25px;
         }
-
         .avatar-inner{
             width: 40px;
             height: 40px;
@@ -41,13 +41,13 @@
             -webkit-transition: transform 0.35s;
             transition: transform 0.35s;
         }
-
         .note-content{
             width: auto;
-            height: 150px;
+            min-height: 150px;
             background-color: #F0F0E3;
             margin-top: -50px;
             margin-left: 50px;
+            padding:0 0 0 32px;
             border-radius: 10px;
             box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.75) inset;
         }
@@ -59,6 +59,36 @@
             -o-transform: rotate(360deg);
             transform: rotate(360deg);
         }
+        .note-content h3{
+            margin:0;
+            padding:10px 0;
+            font-size:16px;
+            font-weight:normal;
+        }
+        .note-content p{
+            margin:0px;
+            font-size:12px;
+            line-height: 22px;
+        }
+        .note-content p.note-info{
+            margin:3px 0;
+        }
+        .note-content p.note-info time{
+
+        }
+        .note-content p.note-info i.heart{
+            background-image: url("images/greay-heart.png");
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .note-content p.note-info i.heart:hover{
+            background-image: url("images/pink-heart.png");
+        }
     </style>
 </head>
 <body>
@@ -68,6 +98,12 @@
             <div class="avatar-inner"></div>
         </div>
         <div class="note-content">
+            <h3>爪哇国的little rabit</h3>
+            <p>小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。</p>
+            <p class="note-info">
+                <time>2016-06-15</time>
+                <i class="heart"></i>
+            </p>
         </div>
     </div>
     <div class="note">
@@ -75,6 +111,12 @@
             <div class="avatar-inner"></div>
         </div>
         <div class="note-content">
+            <h3>爪哇国的little rabit</h3>
+            <p>小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。</p>
+            <p class="note-info">
+                <time>2016-06-15</time>
+                <i class="heart"></i>
+            </p>
         </div>
     </div>
     <div class="note">
@@ -82,15 +124,14 @@
             <div class="avatar-inner"></div>
         </div>
         <div class="note-content">
+            <h3>爪哇国的little rabit</h3>
+            <p>小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。小么小二郎呀，背着书包上学堂，不怕风雨吹，不怕太阳晒，我是一只来自爪哇国的小兔子，我的名字叫Little rabit。</p>
+            <p class="note-info">
+                <time>2016-06-15</time>
+                <i class="heart"></i>
+            </p>
         </div>
     </div>
 </div>
-
-
-<script src="jquery-2.2.1.min.js"></script>
-
-<script>
-
-</script>
 </body>
 </html>
