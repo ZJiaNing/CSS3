@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hover 特效</title>
+    <style type="text/css">
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body{
+            padding:0;
+            margin:0;
+            background-color: lightgray;
+        }
+        .container{
+            width: 1170px;
+            height:auto;
+            margin:0 auto;
+            background-color: pink;
+        }
+        p{
+            letter-spacing: 1px;
+        }
+        figure{
+            position: relative;
+            width:33.3%;
+            height:400px;
+            overflow: hidden;
+            text-align: center;
+            cursor: pointer;
+        }
+        .layla{
+            background-color: #18a367;
+        }
+        .layla img{
+            opacity:0.7;
+            transition: transform 0.35s;
+            min-width: 100%;
+            height: -webkit-calc(100% + 40px);
+            height: calc(100% + 40px);
+        }
+        .layla h2{
+            margin-top:26%;
+            color:white;
+        }
+        .layla p{
+            padding: 5px 30px;
+            color:white;
+            opacity:0;
+            -webkit-transition: opacity 0.35s;
+            transition: opacity 0.35s;
+        }
+        .layla figcaption{
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            padding: 30px;
+        }
+        figure.layla figcaption::before,figure.layla figcaption::after{
+            content: '';
+            position: absolute;
+            opacity:0;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+        }
+        figure.layla figcaption::before{
+            top: 50px;
+            right: 30px;
+            bottom: 50px;
+            left: 30px;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+            -webkit-transform: scale(0,1);
+            transform: scale(0,1);
+            -webkit-transform-origin: 0 50%;
+            transform-origin: 0 50%;
+        }
+        figure.layla figcaption::after{
+            top: 30px;
+            right: 50px;
+            bottom: 30px;
+            left: 50px;
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+            -webkit-transform: scale(1,0);
+            transform: scale(1,0);
+            -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0;
+        }
+        figure.layla:hover figcaption::before,
+        figure.layla:hover figcaption::after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        figure.layla:hover p{
+            opacity:1;
+        }
+        figure.layla:hover img{
+            opacity:0.5;
+            -webkit-transform: translate3d(0,-30px,0);
+            transform: translate3d(0,-30px,0);
+        }
+        figure.layla:hover figcaption::after,
+        figure.layla:hover h2,
+        figure.layla:hover p,
+        figure.layla:hover img {
+            -webkit-transition-delay: .15s;
+            transition-delay: .15s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <figure class="layla">
+            <img src="images/4.jpg" alt="img06"/>
+            <figcaption>
+                <h2>Fresh <span>Bubba</span></h2>
+                <p>Bubba likes to appear out of thin air.</p>
+            </figcaption>
+        </figure>
+    </div>
+</body>
+</html>

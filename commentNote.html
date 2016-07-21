@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            background: url("images/bg.jpg") repeat 0 0;
+        }
+        .container{
+            width:1170px;
+            height: auto;
+            /*background: url("images/bg.jpg") repeat 0 0;*/
+        }
+        .note{
+            width: 33.3%;
+            height: 150px;
+            margin: 10px 0;
+        }
+        .avatar{
+            position: relative;
+            top: 20px;
+            left: 20px;
+            background: url("images/bg.jpg") repeat 0 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+
+        .avatar-inner{
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            left: 5px;
+            top: 5px;
+            position: relative;
+            background-image: url("images/rabit.jpg");
+            background-repeat: no-repeat;
+            -webkit-background-size:contain;
+            background-size:contain;
+            -webkit-transition: transform 0.35s;
+            transition: transform 0.35s;
+        }
+
+        .note-content{
+            width: auto;
+            height: 150px;
+            background-color: #F0F0E3;
+            margin-top: -50px;
+            margin-left: 50px;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 1px 0 rgba(255,255,255,.75) inset;
+        }
+        /*如下面，前后两者必须是“父子”关系*/
+        .note:hover .avatar-inner{
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="note">
+        <div class="avatar">
+            <div class="avatar-inner"></div>
+        </div>
+        <div class="note-content">
+        </div>
+    </div>
+    <div class="note">
+        <div class="avatar">
+            <div class="avatar-inner"></div>
+        </div>
+        <div class="note-content">
+        </div>
+    </div>
+    <div class="note">
+        <div class="avatar">
+            <div class="avatar-inner"></div>
+        </div>
+        <div class="note-content">
+        </div>
+    </div>
+</div>
+
+
+<script src="jquery-2.2.1.min.js"></script>
+
+<script>
+
+</script>
+</body>
+</html>
