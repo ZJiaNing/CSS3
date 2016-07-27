@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 Images Sprites</title>
+    <link href="common.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        body{
+            background-color:#0a1c33;
+        }
+        .container{
+            background-color: #0a1c33;
+        }
+        ul li{
+            width:60px;
+            height:50px;
+            position: relative;
+            background-color: #153156;
+            background-image: url('images/tooltip-ico.png');
+            background-repeat: no-repeat;
+            background-position-x: 0px;
+            margin:10px 0;
+            cursor: pointer;
+        }
+        ul li.message{
+            background-position-y: -110px;
+        }
+        ul li.feedback{
+            background-position-y: -175px;
+        }
+        ul li.qrnote{
+            background-position-y: -232px;
+        }
+        ul li.returnback{
+            background-position-y: -293px;
+        }
+        ul li:hover{
+            background-position-x: -108px;
+        }
+        ul li.mouseenter{
+            animation:mouseenter 0.35s;
+        }
+        ul li.mouseleave{
+            animation:mouseleave 0.35s;
+        }
+        @keyframes mouseenter {
+            from{
+                background-position-x: 0px;
+            }
+            to{
+                background-position-x: -108px;
+            }
+        }
+        @keyframes mouseleave {
+            from{
+                background-position-x: -108px;
+            }
+            to{
+                background-position-x: 0px;
+            }
+        }
+        #showQrnote{
+            position: absolute;
+            width: 120px;
+            height: 150px;
+            display: block;
+            left: 65px;
+            top: -30px;
+            text-align: center;
+            color:white;
+            border:1px solid deeppink;
+        }
+        #showQrnote img{
+            margin:5px 0;
+        }
+        #showQrnote:before{
+            content: '';
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--i策略中的tooltip_right是配合了js使用的，也并不是完全的css3，难道不能纯粹用css3做吗？-->
+    <div class="sideTooltip">
+        <ul>
+            <li class="message"></li>
+            <li class="feedback"></li>
+            <li class="qrnote">
+                <div id="showQrnote">
+                    <img src="images/rabit.jpg" />
+                    <p>Little rabbit</p>
+                </div>
+            </li>
+            <li class="returnback"></li>
+        </ul>
+    </div>
+</div>
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script>
+    $(function (){
+        $('body').on('mouseenter','.sideTooltip ul li',function (){
+            $(this).removeClass('mouseleave').addClass('mouseenter');
+        })
+        $('body').on('mouseleave','.sideTooltip ul li',function (){
+            $(this).removeClass('mouseenter').addClass('mouseleave');
+        })
+    });
+</script>
+</body>
+</html>

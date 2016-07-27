@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--OFFICIAL WEBSITE http://visjs.org/network_examples.html-->
+    <meta charset="UTF-8">
+    <title>test for VIS</title>
+    <link href="vis/vis.min.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body{
+            padding:0;
+            margin:0;
+        }
+        .container{
+            width:100%;
+            height: 100vh;
+            background-image: url("images/tpBg.jpg");
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+        #mynetwork{
+            width:100%;
+            height:100%;
+        }
+        ul.context-menu{
+            position: absolute;
+            padding: 5px;
+            margin: 0;
+            background-color: rgba(0,0,0,0.6);
+            list-style: none;
+            border-radius: 5px;
+        }
+        ul.context-menu li{
+            padding-left: 20px;
+            color:white;
+            line-height: 22px;
+            background-repeat:no-repeat;
+            background-position: left center;
+            cursor: pointer;
+        }
+        ul.context-menu li:first-child{
+            background-image: url("images/add_node.png");
+        }
+        ul.context-menu li:last-child{
+            background-image: url("images/clear_node.png");
+        }
+        ul.context-menu li:first-child:hover{
+            background-image: url("images/add_node_bg.png");
+        }
+        ul.context-menu li:last-child:hover{
+            background-image: url("images/clear_node_bg.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="mynetwork"></div>
+    </div>
+
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="vis/vis.min.js"></script>
+<script>
+    $(function (){
+        window.network = null;  //create a obj to realize the chart
+        var global_cur_id = '';
+        var selectedNodeId = '';
+        /*tooltip的动态生成*/
+        var toolTip = {
+            addHtml:'<ul class="context-menu"><li id="addReport">加入报表</li><li id="clearNode">删除节点</li></ul>',
+            setPosition: function (x,y,id){
+                if (id){
+                    $('body').append(this.addHtml);
+                    x = x + 2;
+                    y = y + 2;
+                    var ul = $('.context-menu');
+                    ul.attr('data-id',id);
+                    ul.css({left:x+'px',top:y+'px'});
+                }
+            },
+            remove:function(){
+                var ul = $('.context-menu');
+                if(ul.length > 0){
+                    ul.remove();
+                }
+            },
+            clearNode:function(e){
+                var ele = $(e.target);
+                var id = ele.parents('.context-menu').attr('data-id');
+                nodes.remove(id);
+            },
+            bind: function (){
+                $("body").on("click",'#clearNode',$.proxy(this.clearNode,this));
+            },
+            init:function(){
+                this.bind()
+            }
+        }
+
+        function init (){
+            $.ajax({
+                type: 'GET',
+                url: 'data/visInitData.json',
+                dataType: 'JSON'
+            }).done(function (resp){
+                var node=resp.data.nodes;
+                var edge=resp.data.edges;
+                window.nodes= new vis.DataSet(node);
+                window.edges= new vis.DataSet(edge);
+                var data={
+                    nodes:nodes,
+                    edges:edges
+                }
+                creatNetwork(data);
+                bindNetwork();
+            });
+        }
+
+        /*创建network图*/
+        function creatNetwork(data){
+            var container = document.getElementById('mynetwork');
+            var options={
+                nodes:{
+                    borderWidth:1,
+                    borderWidthSelected:1,
+                    shape:'circle',
+                    color:{
+                        background:'#1359a0',
+                        highlight:{
+                            border:'#f2782f',
+                            background:'#d55305'
+                        },
+                        border:'#2871bc',
+                        hover:{              //hover上去的效果
+                            border:'#f2782f',
+                            background:'#d55305'
+                        }
+                    },
+                    font:{
+                        size:12,
+                        color:'#ffffff',
+                        face:'Microsoft YaHei',
+                        strokeWidth:0,
+                        strokeColor:'#b0bebf'
+                    },
+                    shadow:{
+                        enabled:true,
+                        color:'rgba(188,202,203,0.5)',
+                        size:12,
+                        x:-2,
+                        y:2
+                    }
+                },
+                edges:{
+                    shadow:true,
+                    color:'#707378',
+                    length:200,
+                    font:{
+                        size:12,
+                        color:'#ffffff',
+                        face:'Microsoft YaHei',
+                        strokeWidth:0,
+                        strokeColor:'#b0bebf'
+                    },
+                },
+                interaction:{
+                    hover:true,
+                    multiselect:true,
+                    navigationButtons:false
+                }
+            };
+            network = new vis.Network(container, data, options);
+        }
+
+        /*bind events with network  因为只有一份数据文件，所以双击的时候，只能点击某个特定的*/
+        function bindNetwork(){
+            /*hover的时候记录了id，可以为什么呢？为什么要在这个时候去记录id，右击的时候没有办法获得id吗？*/
+            network.on('hoverNode',function(params){
+                if(JSON.stringify(params)!='{}'){
+                    var id = params.node;
+                    global_cur_id = id;
+                }
+            })
+
+            /*双击事件*/
+            network.on('doubleClick',function (params){
+                params.event = "[original event]";
+                var nodeId=params.nodes[0];
+                selectedNodeId = nodeId;
+                if(selectedNodeId){
+                    $.ajax({
+                        type:'get',
+                        dataType:'json',
+                        url:'data/sevenVisData.json'
+                    }).done(function (resp){
+                        /*i shall do the update operation*/
+                        if (resp.count > 0){
+                            nodes.update(resp.nodes);
+                            edges.update(resp.edges);
+                        }
+
+                        setTimeout(function(){
+                            fouseNode();
+                        },500);
+                    });
+                }
+                fit();
+            });
+
+            /*节点失焦事件*/
+            network.on('blurNode',function(params){
+                if(JSON.stringify(params)!='{}'){
+                    var id = params.node;
+                    global_cur_id = '';
+                    toolTip.remove();
+                }
+            })
+
+            /*右击节点事件*/
+            network.on('oncontext',function(params){
+                params.event="[original event]";
+                toolTip.remove();
+                var x=params.pointer.DOM.x;
+                var y=params.pointer.DOM.y;
+                toolTip.setPosition(x,y,global_cur_id);
+
+            })
+
+            /*阻止在canvas上的鼠标右击默认事件*/
+            $('canvas').on('contextmenu',function(e){
+                e.preventDefault();
+            })
+        }
+
+        /*back to the center of window*/
+        function fit(){
+            var options={
+                offset:{
+                    x:0,
+                    y:0
+                },
+                duration:500,
+                easingFunction:'easeInOutQuad'
+            }
+            network.fit({animation:options});
+        }
+
+        /*聚焦并且放大选中的node*/
+        function fouseNode(){
+            var options={
+                scale:1.5,
+                offset:{
+                    x:0,
+                    y:0
+                },
+                animation: {
+                    duration: 500,
+                    easingFunction: 'easeInOutQuad'
+                }
+            }
+            network.focus(selectedNodeId,options);
+        }
+
+        init ();
+        toolTip.init();
+    })
+</script>
+
+
+</body>
+</html>

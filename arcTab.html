@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arc Tab</title>
+    <link href="common.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+    .container{
+        background-color: transparent;
+    }
+    ul{
+        margin:0;
+        padding:0;
+    }
+    .tab-up li{color:#666}
+    .tab-up li.over{color:#fff;background: #2b6284 url(images/arcsprites.png) right -240px no-repeat;}
+    .tab-up li.over span{background:#2b6284 url(images/arcsprites.png) left -215px no-repeat;}
+    .tab-up li.out{color:#fff;background:#2b6284 url(images/arcsprites.png) right -290px no-repeat;}
+    .tab-up li.out div{background:#727272 url(images/arcsprites.png) left -265px no-repeat;}
+    .tab-up li.out div span{background:url(images/arcsprites.png) repeat-x 0 -315px}
+    .tab-up{border-bottom:2px solid #2b6284;}
+
+    .tab-up { height:21px; width:100%; overflow:hidden; }
+    .tab-up li {height:21px; line-height:21px; overflow:hidden;  padding-right:20px; text-align:center; float:left; }
+    .tab-up li.over { width:100px; overflow:hidden;  padding-right:20px;  text-align:center; cursor:pointer; float:left}
+    .tab-up li.over span { padding-left:20px; display:block;  }
+    .tab-up li.out { width:100px;  overflow:hidden;  padding-right:20px;  text-align:center; cursor:pointer; float:left}
+    .tab-up li.out div { padding-left:20px; display:block; height:21px; overflow:hidden; }
+    .tab-up li.out div span{height:21px;display:block}
+    .tab-up .last{float:right}
+
+    .content{
+        width:100%;
+        height:400px;
+        background-color: lightgreen;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="tab-up">
+        <li class="over"><div><span>Monday</span></div></li>
+        <li class="out"><div><span>Tuesday</span></div></li>
+        <li class="out"><div><span>Wednsday</span></div></li>
+    </ul>
+    <div class="content">
+
+    </div>
+</div>
+
+</body>
+</html>
