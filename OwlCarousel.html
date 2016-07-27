@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OwlCarousel 图片轮播</title>
+    <link href="animate.css" rel="stylesheet" type="text/css" />
+    <link href="OwlCarouse/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            padding:0;
+            margin:0;
+        }
+        .container{
+            width:1170px;
+            height: auto;
+            margin: 0 auto;
+        }
+        .owl-controls{
+            text-align: center;
+        }
+        .owl-carousel .item{
+            /*background-color: lightpink;*/
+            border:2px solid grey;
+        }
+        .owl-nav .owl-prev,.owl-nav .owl-next
+        {
+            color: #fff;
+            font-size: 14px;
+            margin: 5px;
+            padding: 4px 7px;
+            background: #d6d6d6;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+        .owl-nav .owl-prev:hover,.owl-nav .owl-next:hover
+        {
+            background: deepskyblue;
+        }
+        .owl-dot{
+            display: inline-block;
+        }
+        .owl-dot span
+        {
+            width: 10px;
+            height: 10px;
+            margin: 5px 7px;
+            background: #d6d6d6;
+            display: block;
+            -webkit-backface-visibility: visible;
+            -webkit-transition: opacity 200ms ease;
+            -moz-transition: opacity 200ms ease;
+            -ms-transition: opacity 200ms ease;
+            -o-transition: opacity 200ms ease;
+            transition: opacity 200ms ease;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            border-radius: 30px;
+        }
+        .active span{
+            background-color: deepskyblue;
+        }
+        .single-chart{
+            max-height: 289px;
+            min-height: 289px;
+            overflow: hidden;
+        }
+        .single{
+            width: 280px;
+            background-color: #fff;
+            text-align: center;
+            position: relative;
+        }
+        .title-wrap{
+
+        }
+        .title-wrap h3,.title-wrap h5{
+            font-weight:normal;
+            font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
+        }
+        .title-wrap h3{
+            font-size: 24px;
+            line-height: 32px;
+            margin: 10px 0 0;
+            text-transform: uppercase;
+        }
+        .title-wrap h5{
+            font-size: 16px;
+            font-weight: 300;
+            margin: 0 0 15px;
+            line-height: 22px;
+        }
+        .member-img{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transition: 0.4s;
+            z-index: 1;
+        }
+        .member-img img{
+            width:100%;
+            height: 100%;
+            transition: 0.4s;
+            vertical-align: middle;
+        }
+        .more-info{
+            height: 208px;
+            transition: 0.4s;
+        }
+        .more-info p{
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 22px;
+            padding: 0 30px;
+            margin-bottom: 10px;
+        }
+        .single:hover .member-img img{
+            transform: translateY(100%); transition: 0.4s;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="owl-carousel">
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart" style="width:350px; background-color:palegoldenrod">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="single single-chart">
+                <div class="title-wrap">
+                    <h3>Ashaka</h3>
+                    <h5>show me you passion</h5>
+                </div>
+                <div class="member-img">
+                    <img src="images/cat.jpg"/>
+                </div>
+                <div class="more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script src="OwlCarouse/owl.carousel.min.js"></script>
+<script>
+    $(function (){
+        var owl = $('.owl-carousel')
+        owl.owlCarousel({
+//            animateOut: 'slideOutDown',  可以加入CSS3中的动画效果，有比较方便的就是引入animate.css文件
+//            animateIn: 'flipInX',
+            items: 4,
+            loop: false,
+//            autoplay: true,  控制自动播放以及每次自动播放的时间间隔
+//            autoplayTimeout: 2000,
+           // slideBy: 4,
+//            center: true,  可以控制居中，就是中间的居中，然后两边上的显示一半，这种样子的。
+            margin: 10,
+            lazyLoad: true,
+//            autoWidth: true,   每个item的宽度可以是自由的，
+            nav: true,
+//            responsive:{   //我不能理解这个responsive是用来做什么的？默默地，感觉不是很有用
+//                0:{
+//                    items:1
+//                },
+//                600:{
+//                    items:3
+//                },
+//                960:{
+//                    items:5
+//                },
+//                1200:{
+//                    items:6
+//                }
+//            }
+        })
+        owl.on('mousewheel', '.owl-stage', function (e) {  //如果要使用这个功能，则要设置loop为true
+            if (e.deltaY>0) {
+                owl.trigger('next.owl');
+            } else {
+                owl.trigger('prev.owl');
+            }
+            e.preventDefault();
+        });
+    })
+</script>
+</body>
+</html>
