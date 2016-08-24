@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regular Hexagon 正六边形</title>
+    <style type="text/css">
+        .container{
+            width:1170px;
+            height: 500px;
+            margin:0 auto;
+            background-color: lightpink;
+        }
+        .hexagon{
+
+        }
+        .hexagon a{
+            width: 60px;
+            height: 104px;
+            display: block;
+            /*background: url("images/hexagon.png") orange no-repeat;*/
+            background-color:orange;
+            background-image: url("images/hexagon.png");
+            background-repeat:no-repeat;
+            position: absolute;
+        }
+        .hexagon .one{
+            background-image: none;
+            transform: rotate(60deg);
+        }
+        .hexagon .two{
+            background-image: none;
+            transform: rotate(-60deg);
+        }
+        .hexagon .three{
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hexagon">
+        <a class="one"></a>
+        <a class="two"></a>
+        <a class="three"></a>
+    </div>
+</div>
+</body>
+</html>
