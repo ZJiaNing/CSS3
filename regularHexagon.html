@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <title>Regular Hexagon 正六边形</title>
     <style type="text/css">
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding:0;
+            margin: 0;
+        }
         .container{
             width:1170px;
-            height: 500px;
+            height: 50vh;
             margin:0 auto;
             background-color: lightpink;
         }
@@ -33,6 +40,25 @@
         }
         .hexagon .three{
         }
+        .nav > a{
+            position: relative;
+            display: inline-block;
+            padding: .3em 1em 0;
+        }
+        .nav > a:before{
+            content: '';
+            position: absolute;
+            top: 0;left: 0;right: 0;bottom: 0;
+            z-index: -1;
+            background: #ccc;
+            background-image: linear-gradient(hsla(0, 0%, 100%, .6 ), hsla(0, 0%, 100%, 0));
+            border: 1px solid rgba(0,0,0,0.4);
+            border-bottom: none;
+            border-radius: .5em .5em 0 0;
+            box-shadow: 0 .15em white inset;
+            transform: perspective(.5em) rotate(5deg);
+            transform-origin: bottom;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +67,13 @@
         <a class="one"></a>
         <a class="two"></a>
         <a class="three"></a>
+    </div>
+</div>
+<div class="container">
+    <div class="nav">
+        <a>Home</a>
+        <a>Article</a>
+        <a>About</a>
     </div>
 </div>
 </body>

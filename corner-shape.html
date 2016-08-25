@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弧形切角</title>
+    <style type="text/css">
+        *{
+            box-sizing: border-box;
+            padding:0;
+            margin:0;
+        }
+        .container{
+            width:1230px;
+            height:50vh;
+            margin: 0 auto;
+            background: pink;
+            background-image: radial-gradient(white 30%, transparent 0),
+                              radial-gradient(white 30%, transparent 0);
+            background-size:30px 30px;
+            background-position: 0 0, 15px 15px;
+            display: flex;
+        }
+        .container > svg{
+            width:390px;
+            height:300px;
+            margin:0 10px;
+            color: white;
+        }
+        .container > svg path{
+            fill: hsl(320, 80%, 30%);
+        }
+        .container > div.round{
+            width:390px;
+            margin:10px;
+            background:#58a;
+            background: radial-gradient(circle at top left, transparent 30px, red 0) top left,
+                        radial-gradient(circle at top right, transparent 30px, green 0) top right,
+                        radial-gradient(circle at bottom right, transparent 30px, yellow 0) bottom right,
+                        radial-gradient(circle at bottom left, transparent 30px, black 0) bottom left;
+            background-size: 50% 51%;    /*这的值如果是50%的话，中间会有一条缝的， 这是为什么呢？？*/
+            background-repeat:no-repeat;
+        }
+
+        /*background-size: 25% 25%, 50% 50%  这个属性值居然也是支持这么工作的！！苍天呐~~*/
+
+        .temporary{
+            width: 400px;
+            height:300px;
+            corner-shape: scoop;   /*这个新的特性CSS3 还没有支持， Maybe, CSS4~*/
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--<div id="roundOne" class="round"></div>-->
+        <!--<div class="round"></div>-->
+        <!--<div class="round"></div>-->
+        <svg>
+            <path d="M 40 0 h 320 a 40 30 0 0 0 40 30 v 240 a 40 30 0 0 0 -40 30 h -320 a 40 30 0 0 0 -40 -30 v -240 a 40 30 0 0 0 40 -30 Z"></path>
+            <text y="50%" x="50%" dy=".3em">CSS pattern Gallery</text>
+        </svg>
+        <svg>
+            <path d="M 40 0 h 320 a 40 30 0 0 0 40 30 v 240 a 40 30 0 0 0 -40 30 h -320 a 40 30 0 0 0 -40 -30 v -240 a 40 30 0 0 0 40 -30 Z"></path>
+            <text y="50%" x="50%" dy=".3em">http://lea.verou.me/css3patterns</text>
+        </svg>
+        <svg>
+            <path d="M 40 0 h 320 a 40 30 0 0 0 40 30 v 240 a 40 30 0 0 0 -40 30 h -320 a 40 30 0 0 0 -40 -30 v -240 a 40 30 0 0 0 40 -30 Z"></path>
+            <text y="50%" x="50%" dy=".3em">Welcome visit</text>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+    </div>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script>
+    $(function (){
+
+    });
+</script>
+</body>
+</html>

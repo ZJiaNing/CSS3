@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The attribute of CSS3 named background-clip</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .container{
+            width:1170px;
+            height: 50vh;
+            display: flex;
+            margin:0 auto;
+            margin-top: 20px;
+            background-color: pink;
+            padding:10px;
+        }
+        .pading{
+            padding:20px;
+            magin:0 5px;
+            background-color: #00ff26;
+            background-clip: padding-box;
+            border:5px dashed darkblue;
+        }
+        .content{
+            padding:20px;
+            magin:0 5px;
+            background-color: grey;
+            background-clip: content-box;
+            border:5px dashed orangered;
+        }
+        .boder{
+            padding:20px;
+            magin:0 5px;
+            background-color: mediumpurple;
+            background-clip: border-box;
+            border:5px dashed darkblue;
+        }
+        img{
+            width:300px;
+            height:auto;
+            margin: 0 auto;
+        }
+        p{
+            line-height:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <p> March 1979 and I am watching Nazis
+                march through Chicago. The bold type
+                of the Sun-Times describes a small band
+                of hoodlums, undereducated boy scouts, the better
+                to be ignored. My grandfather, back hunched
+                over his Bible, agrees. Jews like myself
+                should stay home, should lay down our stones
+                and pray like the Jews that we are.</p>
+        </div>
+        <div class="pading"><p> Grandfather, you are easy to love
+            with your long beard and the way you sway
+            like a palm branch in the storm. It is easy
+            to romanticize your spiritual search,
+            worldly naiveté and wise rabbinical words.
+            You belong in the books I read
+            by Singer, Peretz, Sholom Aleichem.
+            But their characters are ignorant
+            of the chapters to come. You know
+            where their prayers will lead.</p></div>
+        <div class="boder"><p> Grandfather, you are easy to love
+            with your long beard and the way you sway
+            like a palm branch in the storm. It is easy
+            to romanticize your spiritual search,
+            worldly naiveté and wise rabbinical words.
+            You belong in the books I read
+            by Singer, Peretz, Sholom Aleichem.
+            But their characters are ignorant
+            of the chapters to come. You know
+            where their prayers will lead.</p></div>
+
+    </div>
+<script>
+    var a = (new Date()).times
+</script>
+</body>
+</html>

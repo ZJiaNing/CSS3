@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 关键字 ccurrentColor</title>
+    <style type="text/css">
+        .container{
+            width:1170px;
+            height: 500px;
+            margin:0 auto;
+            background-color: white;
+            border:2px dashed darkblue;
+        }
+        .part-one, .part-two{
+            width:100%;
+            height:250px;
+        }
+        .part-two>div{
+            color: red;
+            border: 5px solid currentColor;
+            box-shadow: 0 0 50px currentColor;
+        }
+        .icon {
+            display: inline-block;
+            width: 16px;
+            height: 20px;
+            background-image: url('images/sprite_icons.png');
+            background-color: currentColor; /* 该颜色控制图标的颜色 */
+        }
+        .icon1 { background-position: 0 0; }
+        .icon2 { background-position: -20px 0; }
+        .icon3 { background-position: -40px 0; }
+        .icon4 { background-position: -60px 0; }
+        .link { margin-right: 15px; }
+        .link{
+            text-decoration: none;
+            color: grey;
+        }
+        .link:hover { /* 虽然改变的是文字颜色，但是图标颜色也一起变化了 */
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="part-one">
+            <a href="##" class="link"><i class="icon icon1"></i>返回</a>
+            <a href="##" class="link"><i class="icon icon2"></i>刷新</a>
+            <a href="##" class="link"><i class="icon icon3"></i>收藏</a>
+            <a href="##" class="link"><i class="icon icon4"></i>展开图片</a>
+        </div>
+        <div class="part-two">
+            <div>Hello, World!</div>
+        </div>
+    </div>
+</body>
+</html>
