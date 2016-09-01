@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>梯形样子的tab</title>
+    <style type="text/css">
+            *{
+                box-sizing: border-box;
+                padding:0;
+                margin:0;
+                font-family: 'Microsoft YaHei';
+                font-size:16px;
+            }
+            body{
+                background-color: pink;
+            }
+            .container{
+                width:1170px;
+                height:100vh;
+                background-color: pink;
+                margin: 0 auto;
+            }
+            ul{
+                list-style:none;
+            }
+            ul li{
+                position: relative;
+                display: inline-block;
+                width: 200px;
+                height: 50px;
+                line-height: 50px;
+                background-color:#1f2530;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                text-align: center;
+                cursor: pointer;
+                /*-webkit-transform: perspective( 100px ) rotateX( 45deg );*/
+                /*-moz-transform: perspective( 100px ) rotateX( 45deg );*/
+                /*-o-transform: perspective( 100px ) rotateX( 45deg );*/
+                /*transform: perspective( 100px ) rotateX( 45deg );*/
+                margin-top:100px;
+            }
+            ul li>a{
+                color: white;
+                text-decoration: none;
+            }
+            ul li:before{
+                content: '';
+                display: inline-block;
+                position: absolute;
+                width: 50px;
+                height: 65.5px;
+                background: #1f2530;
+                left: -3px;
+                top: -14px;
+                border-top-left-radius: 10px;
+                transform: perspective( 100px ) rotateX( 45deg );
+            }
+            ul li:after{
+                content: '';
+                display: inline-block;
+                position: absolute;
+                width: 50px;
+                height: 65.5px;
+                background: #1f2530;
+                right: -3px;
+                top: -14px;
+                border-bottom-right-radius: 10px;
+                transform: perspective( 100px ) rotateX( -135deg );
+            }
+            ul li.active:before,ul li.active:after{
+                background: #0048b9;
+            }
+            ul li.active{
+                background-color: #0048b9;
+                z-index: 2;
+            }
+    </style>
+</head>
+<body>
+<!--虽然很难直接绘制或者拼凑出梯形，但是我们可以利用perspective来达到想要的目的-->
+<!--但是随之而来的是字体也跟着变形了，怎么办呢？ 看看能不能有伪类类实现同样的效果，但是阻止文字变形-->
+<div class="container">
+    <ul id="trapezoid">
+        <li><a>Monday</a></li><li class="active"><a>Tuesday</a></li><li><a>Wednsday</a></li>
+    </ul>
+</div>
+<script src="js/jquery-2.2.1.min.js"></script>
+<script>
+    $(function (){
+       $('ul li').on('click',function (){
+           $(this).addClass('active').siblings().removeClass('active');
+       });
+    });
+</script>
+</body>
+</html>
