@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>不定长宽的垂直居中</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: pink;
+        }
+        .container{
+            position: absolute;
+            padding: 5px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border:1px solid grey;
+            box-shadow: 0 0 5px 3px rgba(0,0,0,0.5);
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">The width CSS property specifies the width of the content area of an element. The content area is inside the padding, border, and margin of the element.</div>
+</body>
+</html>
