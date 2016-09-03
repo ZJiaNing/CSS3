@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>固定Footer在底部</title>
+    <style type="text/css">
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: pink;
+        }
+        .container{
+            display: flex;
+            flex-flow: column;
+            min-height: 100vh;
+        }
+        header{
+            width:100%;
+            height: 3em;
+            background-color: #00ff26;
+        }
+        .main{
+            width:100%;
+            min-height: calc(100vh - 6em);
+            background-color: white;
+        }
+        footer{
+            width:100%;
+            height: 3em;
+            background-color:darkorchid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>This is header</header>
+        <div class="main">content area</div>
+        <footer>This is footer</footer>
+    </div>
+</body>
+</html>
