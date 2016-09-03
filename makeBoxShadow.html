@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>the beautiful but odd shadow</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: gainsboro;
+        }
+        .container,.table{
+            display: flex;
+            width: 1170px;
+            height: auto;
+            margin: 0 auto;
+            background-color: pink;
+        }
+        .table{
+            display: block!important;
+        }
+        .container>div{
+            width:100%;
+            height: 300px;
+            margin:20px;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .mx{
+            background-color: red;
+            box-shadow: 3px 3px 5px rgba(212,8,44,0.6),
+                         5px 5px 7px rgba(0,0,0,0.5);
+        }
+        .tx{
+            background-color: orange;
+            box-shadow: 0 0 3px 3px rgba(212,8,44,0.6),
+                         0 0 5px 5px rgba(0,0,0,0.5);
+        }
+        .wx{
+            background-color: yellow;
+            box-shadow: 3px 0 5px rgba(46, 94, 182,0.6);
+        }
+        .thx{
+            background-color: green;
+            box-shadow: 5px 0 5px -2px black,
+                         -5px 0 5px -2px black;
+        }
+        .fx{
+            background-color: blue;
+            box-shadow: 0 8px 6px -6px rgba(0,0,0,0.6);
+        }
+        .sx{
+            background-color: indigo;
+        }
+        .sux{
+            background-color: violet;
+        }
+        table{
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+            border: 1px solid deeppink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="mx">Monday</div>
+        <div class="tx">Tuesday</div>
+        <div class="wx">Wednesday</div>
+        <div class="thx">Thursday</div>
+        <div class="fx">Friday</div>
+        <div class="sx">Saturday</div>
+        <div class="sux">Sunday</div>
+    </div>
+    <div class="container table">
+        <h2>Box-Shadow</h2>
+        <table>
+            <thead>
+            <th>Value</th>
+            <th>Definition</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>h-shadow</td>
+                <td><pre>require  水平阴影的位置  允许负值</pre></td>
+            </tr>
+            <tr>
+                <td>v-shadow</td>
+                <td><pre>require  垂直阴影的位置  允许负值</pre></td>
+            </tr>
+            <tr>
+                <td>blur</td>
+                <td>模糊距离</td>
+            </tr>
+            <tr>
+                <td>spread</td>
+                <td>阴影尺寸</td>
+            </tr>
+            <tr>
+                <td>inset OR outset</td>
+                <td>内部阴影还是外部阴影</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
