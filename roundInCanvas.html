@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
+      }
+      .container{
+        width:1170px;
+        height: 100vh;
+        margin:0 auto;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center;
+        text-align: center;
+      }
+      .bluebk{
+        background-image: url('./images/canvaspiebk.png');
+      }
+      #canvas{
+        width:600px;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container bluebk">
+      <!-- canvas的长度和宽度要设置在标签上，不然会出现模糊的现象 -->
+      <canvas id="canvas" width="600" height="600"></canvas>
+    </div>
+    <!-- <div class="container">
+      <canvas id="canvas2" width="400" height="400"></canvas>
+    </div> -->
+    <!-- 下面的代码是用来绘制饼图的 -->
+    <script type="text/javascript">
+      // 画圆并不单单是直接用arc还用到了context的 beginPath和closePath方法
+      var data =  [45, 45, 45, 45, 45, 45, 45, 45];
+      var deg = Math.PI/180;
+      var startPointer = Math.PI/180*90;
+      var canvas = document.getElementById('canvas');
+      var ctx = canvas.getContext("2d");
+      function drawSmallCircle () {
+        var colors = ["#1d9bff", "#00beff", "#00d8e7", "#ffdc00", "#ff9700", "#f76821", "#b956f7", "#f675fd"];
+        var borderColors = ["#42b6ff", "#92dcff", "#27e4f3", "#fff600", "#ffc000", "#fe8f26", "#c96aff", "#f99dff"];
+        for (var i=0; i<colors.length; i++){
+          ctx.fillStyle = colors[i];
+          ctx.beginPath();
+          // 让每绘制完一个之后，下一个绘制图像的起点回到圆心处
+          ctx.moveTo(300, 300);
+          // 顺时针是true， 逆时针是false（false可以省略）
+          ctx.arc(300, 300, 150, startPointer, deg*data[i]+startPointer, false);
+          // ctx.fillStyle = 'rgba(0,255,0,0.25)';
+          ctx.fill();  //  fill()还是要调用的，要把颜色填充上去的
+          ctx.shadowColor = 'rgba(194, 191, 191, 0.5)';
+          ctx.shadowOffsetX = 0;
+          ctx.shadowOffsetY = 0;
+          ctx.shadowBlur = 10;
+          ctx.closePath();
+          startPointer+=deg*data[i];
+        }
+      }
+      function drawBigCircle () {
+          var colors = ["#0866e5", "#008bec", "#12b7c6", "#e8bf00", "#ea7900", "#e3470b", "#8d2add", "#dc48e5"];
+          var borderColors = ["#42b6ff", "#92dcff", "#27e4f3", "#fff600", "#ffc000", "#fe8f26", "#c96aff", "#f99dff"];
+          // 你先试着画一个文字上去看看呗
+          // var txt = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'ssh', 'ssl'];
+          var txt = "Hello"
+          for (var i=0; i<colors.length; i++){
+            ctx.fillStyle = colors[i];
+            ctx.beginPath();
+            // 怎样才算
+            ctx.moveTo(300, 300);
+            ctx.arc(300, 300, 250, startPointer, deg*data[i]+startPointer, false);
+
+            // ctx.fillStyle = 'rgba(0,255,0,0.25)';
+            ctx.fill();  //  fill()还是要调用的，要把颜色填充上去的,不过fill跟stroke不一样，fill调用了，则会自动将路径关闭掉，但是stroke不行
+            ctx.shadowColor = 'rgba(194, 191, 191, 0.5)';
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowBlur = 10;
+            ctx.closePath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = borderColors[i];
+            ctx.stroke();
+            startPointer+=deg*data[i];
+          }
+      }
+
+      function drawText () {
+        var txt = ['游戏', '影视', '音乐', '玩具', '周边', '虚拟现实', '小说', '动漫'];
+        var x = [325, 380, 390, 330, 240, 180, 180, 240];
+        var y = [200, 260,350, 410, 410, 340, 265,200];
+        ctx.font = 'bold 16px arial';
+        ctx.fillStyle = 'black';
+        // ctx.fillText('游戏', 325,200);
+        // ctx.fillText('影视', 380,260);
+        // ctx.fillText('音乐', 390,350);
+        // ctx.fillText('玩具', 330,410);
+        // ctx.fillText('周边', 240,410);
+        // ctx.fillText('虚拟现实', 180,340);
+        // ctx.fillText('小说', 180,265);
+        // ctx.fillText('动漫', 240,200);
+        for (var i=0; i<txt.length; i++){
+          ctx.fillText(txt[i], x[i], y[i]);
+          // strokeText顾名思义是对字体描边的
+          // ctx.strokeText(txt[i], x[i], y[i]);
+        }
+      }
+
+      function drawImage () {
+        var images = ['./images/yx_index.png', './images/ys_index.png', './images/yy_index.png', './images/wj_index.png', './images/zb_index.png', './images/xnxs_index.png', './images/xs_index.png', './images/dm_index.png'];
+        var x = [325, 380, 390, 330, 240, 180, 180, 240];
+        var y = [200, 260,350, 410, 410, 340, 265,200];
+        for (var i=0;i<images.length;i++){
+          createImg(images[i], x[i], y[i]);
+        }
+      }
+
+      function createImg (src, x, y){
+        var img = new Image();
+        img.src = src;
+        img.onload = function (){
+          ctx.drawImage(img, x, y);
+        }
+      }
+
+      function drawHeart () {
+        ctx.beginPath();
+        ctx.moveTo(75,40);
+        ctx.bezierCurveTo(75,37,70,25,50,25);
+        ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+        ctx.bezierCurveTo(20,80,40,102,75,120);
+        ctx.bezierCurveTo(110,102,130,80,130,62.5);
+        ctx.bezierCurveTo(130,62.5,130,25,100,25);
+        ctx.bezierCurveTo(85,25,75,37,75,40);
+        ctx.fill();
+      }
+
+      drawBigCircle();
+      drawSmallCircle();
+      drawHeart();
+      drawText();
+      drawImage();
+    </script>
+
+    <!-- 下面的代码用来绘制渐变颜色表格 -->
+    <script type="text/javascript">
+    // var ctx = document.getElementById('canvas2').getContext('2d');
+    function drawRectGrid() {
+      for (var i=0;i<6;i++){
+        for (var j=0;j<6;j++){
+          ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
+                           Math.floor(255-42.5*j) + ',0)';
+          ctx.fillRect(j*25,i*25,25,25);
+        }
+      }
+    }
+
+    function drawRoundRect (){
+      for (var i=0;i<6;i++){
+        for (var j=0;j<6;j++){
+          ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' +
+                           Math.floor(255-42.5*j) + ')';
+          ctx.beginPath();
+          ctx.arc(12.5+j*25,12.5+i*25,10,0,Math.PI*2,true);
+          ctx.stroke();
+        }
+      }
+    }
+    // drawRectGrid();
+    // drawRoundRect();
+    </script>
+  </body>
+</html>
