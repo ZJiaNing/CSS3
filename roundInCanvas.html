@@ -21,6 +21,9 @@
       .bluebk{
         background-image: url('./images/canvaspiebk.png');
       }
+      .pinkbk{
+        background-color: pink;
+      }
       #canvas{
         width:600px;
         height: 600px;
@@ -35,6 +38,9 @@
     <!-- <div class="container">
       <canvas id="canvas2" width="400" height="400"></canvas>
     </div> -->
+    <div class="container pinkbk">
+      <canvas id="canvas3" width="600" height="600" style="border:1px solid red;"></canvas>
+    </div>
     <!-- 下面的代码是用来绘制饼图的 -->
     <script type="text/javascript">
       // 画圆并不单单是直接用arc还用到了context的 beginPath和closePath方法
@@ -91,8 +97,8 @@
       }
 
       function drawText () {
-        var txt = ['游戏', '影视', '音乐', '玩具', '周边', '虚拟现实', '小说', '动漫'];
-        var x = [325, 380, 390, 330, 240, 180, 180, 240];
+        var txt = ['音乐', '玩具', '周边', '虚拟现实', '小说', '动漫', '游戏', '影视'];
+        var x = [325, 380, 390, 315, 240, 180, 180, 240];
         var y = [200, 260,350, 410, 410, 340, 265,200];
         ctx.font = 'bold 16px arial';
         ctx.fillStyle = 'black';
@@ -112,9 +118,9 @@
       }
 
       function drawImage () {
-        var images = ['./images/yx_index.png', './images/ys_index.png', './images/yy_index.png', './images/wj_index.png', './images/zb_index.png', './images/xnxs_index.png', './images/xs_index.png', './images/dm_index.png'];
-        var x = [325, 380, 390, 330, 240, 180, 180, 240];
-        var y = [200, 260,350, 410, 410, 340, 265,200];
+        var images = ['./images/yy_index.png', './images/wj_index.png', './images/zb_index.png', './images/xnxs_index.png', './images/xs_index.png', './images/dm_index.png', './images/yx_index.png', './images/ys_index.png'];
+        var x = [315, 380, 390, 330, 240, 180, 180, 240];
+        var y = [220, 260,350, 410, 410, 340, 265,200];
         for (var i=0;i<images.length;i++){
           createImg(images[i], x[i], y[i]);
         }
@@ -140,11 +146,20 @@
         ctx.fill();
       }
 
+      //不管是点击事件，还会mousemove时间都是需要确定当前的位置的——可是应该怎么准确确定呢
+      function changeLocate (cliX, cliY){
+
+      }
+
       drawBigCircle();
       drawSmallCircle();
       drawHeart();
       drawText();
       drawImage();
+
+      canvas.onclick = function (e){
+        console.log ('oh~ you touched me!!');
+      }
     </script>
 
     <!-- 下面的代码用来绘制渐变颜色表格 -->
@@ -173,6 +188,61 @@
     }
     // drawRectGrid();
     // drawRoundRect();
+    </script>
+    <script type="text/javascript">
+    function draw() {
+      var ctx = document.getElementById('canvas3').getContext('2d');
+      ctx.fillRect(150,150,300,300);
+      // ctx.translate(75,75);
+
+      // Create a circular clipping path
+      ctx.beginPath();
+      ctx.arc(300,300,125,125,Math.PI*2,true);
+      ctx.clip();
+      // draw background
+      var lingrad = ctx.createLinearGradient(0,-75,0,75);
+      lingrad.addColorStop(0, '#232256');
+      lingrad.addColorStop(1, '#143778');
+      ctx.fillStyle = lingrad;
+      ctx.fill();
+
+      for (var j=1;j<50;j++){
+        ctx.save();
+        ctx.fillStyle = '#fff';
+        ctx.translate(75-Math.floor(Math.random()*300),
+                      75-Math.floor(Math.random()*300));
+        _drawStar(ctx,Math.floor(Math.random()*4)+2);
+        ctx.restore();
+      }
+    }
+
+    function _drawStar(ctx,r){
+      ctx.save();
+      ctx.beginPath()
+      ctx.moveTo(r,0);
+      for (var i=0;i<9;i++){
+        ctx.rotate(Math.PI/5);
+        if(i%2 == 0) {
+          ctx.lineTo((r/0.525731)*0.200811,0);
+        } else {
+          ctx.lineTo(r,0);
+        }
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // draw();
+    function drawStar (){
+         ctx3.beginPath(); //开始路径
+         for (var i = 0; i < 5; i++) {
+            ctx3.lineTo(Math.cos((54 + i * 72 - changeDeg) / 180 * Math.PI) * r + x, -Math.sin((54 + i * 72 - changeDeg) / 180 * Math.PI) * r + y);
+        }
+         ctx3.closePath() //结束路径
+         ctx3.fillStyle = fillColor;
+         ctx3.fill();
+    }
     </script>
   </body>
 </html>
