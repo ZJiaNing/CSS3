@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>background</title>
+    <style media="screen">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      width: 1280px;
+      height: 100vh;
+      background-color: pink;
+      margin: 0 auto;
+    }
+    ul{
+      list-style: none;
+    }
+    .border-grey{
+      border:3px solid #eeeeee;
+    }
+    /* IOS中典型的列表 实现方案一:利用伪元素 starts */
+    .iosList{
+      background-color: #ffffff;
+    }
+    .iosList li{
+      position: relative;
+      background-color: #ffffff;
+      line-height: 40px;
+      padding-left: 15px;
+    }
+    .iosList li:after{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-bottom: 1px solid #ccc;
+      content: "\0020";
+    }
+    .iosList li:not(:last-child)::after {
+      left: 15px;
+    }
+    .iosList li:hover{
+      background-color: #f3f3f3;
+    }
+    /* IOS中典型的列表 实现方案一 ends */
+
+    /* IOS中典型的列表 实现方案二：采用background做边线 starts */
+    .iosListBk{
+      background-color: #ffffff;
+    }
+    .iosListBk li{
+      padding-left: 15px;
+      line-height: 40px;
+      background: linear-gradient(transparent 39px, #ccc 39px, #ccc) no-repeat;
+    }
+    .iosListBk li:not(:last-child) {
+      /*background-position: 15px;*/
+      background-origin: content-box;
+    }
+    /*
+    * background-origin: padding-box | border-box | content-box
+    * 规定background-position基于何种位置来定位
+    */
+    .iosListBk li:hover{
+      background-color: #f3f3f3;
+    }
+    /* IOS中典型的列表 实现方案二 ends */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="border-grey">
+        <h2 class="title">IOS风格列表，实现方案一</h2>
+        <ul class="iosList">
+          <li>Monday</li>
+          <li>Tuesday</li>
+          <li>Wednesday</li>
+          <li>Thursday</li>
+          <li>Friday</li>
+          <li>Saturday</li>
+          <li>Sunday</li>
+        </ul>
+      </div>
+      <div class="border-grey">
+        <h2 class="title">IOS风格列表，实现方案二</h2>
+        <ul class="iosListBk">
+          <li>Monday</li>
+          <li>Tuesday</li>
+          <li>Wednesday</li>
+          <li>Thursday</li>
+          <li>Friday</li>
+          <li>Saturday</li>
+          <li>Sunday</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
