@@ -1,0 +1,241 @@
+<!-- <!DOCTYPE html> -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ABS 项目进度 尝试</title>
+    <style media="screen">
+    *{
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+    }
+    .container{
+      width: 600px;
+      margin: 50px auto;
+      text-align: center;
+      position: relative;
+      background-color: pink;
+    }
+    /*progressbar*/
+    .progressbar {
+      margin-bottom: 30px;
+      overflow: hidden;
+      /*CSS counters to number the steps*/
+      /*counter-reset: step;*/
+    }
+    .progressbar li {
+      list-style-type: none;
+      color: white;
+      text-transform: uppercase;
+      font-size: 9px;
+      /*width: 33.33%;*/
+      width: 25%;
+      float: left;
+      position: relative;
+    }
+    /*#progressbar li:before */
+    .progressbar li:before{
+      /*content: counter(step);
+      counter-increment: step;*/
+      content: '';
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      line-height: 3rem;
+      display: block;
+      font-size: 10px;
+      color: #333;
+      background-color: pink;
+      border-radius: 3px;
+      margin: 0 auto 5px auto;
+      background-image: url(uncheck.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      z-index: 1;
+    }
+    /*progressbar connectors*/
+    .progressbar li:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: white;
+      position: absolute;
+      left: -50%;
+      top: 25px;
+      z-index: 0;
+    }
+    .progressbar li:first-child:after {
+      /*connector not needed before the first step*/
+      content: none;
+    }
+    /*marking active/completed steps green*/
+    /*The number of the step and the connector before it = green*/
+    .progressbar li.active:before{
+      background-image: url(checked.png);
+    }
+    .progressbar li.active:after{
+      background: #27AE60;
+      color: white;
+    }
+    .progressbar li p:nth-child(1){
+      font-size: 20px;
+      color: #97999c;
+    }
+    .progressbar li p:nth-child(2){
+      font-size: 14px;
+      color: #727479;
+    }
+    .progressbar li p>i{
+      font-size: 12px;
+      color: #ff8400;
+      font-style: normal;
+      vertical-align: text-top;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul class="progressbar">
+    		<li class="active">
+          <p>已受理</p>
+          <p>2012-01-01</p>
+        </li>
+    		<li class="active">
+          <p>已反馈</p>
+          <p>2016-01-01</p>
+        </li>
+    		<li>
+          <p>已回复<i>(第四次)</i></p>
+          <p>2016-06-06</p>
+        </li>
+        <li>
+          <p>通过</p>
+          <p>2016-06-06</p>
+        </li>
+    	</ul>
+    </div>
+
+
+    <div class="testDiv">
+      <button type="button" name="button" id="btn">Click me</button>
+    </div>
+
+    <script src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+      $(function (){
+        // 模拟数据
+        var fakeData = [
+            {
+                "msg": "已受理",
+                "count": "",
+                "status": "1",
+                "time": "2017-03-09",
+                "step": "1"
+            },
+            {
+                "msg": "已反馈",
+                "count": "",
+                "status": "1",
+                "time": "2017-03-22",
+                "step": "2"
+            },
+            {
+                "msg": "已回复",
+                "count": "第四次",
+                "status": "1",
+                "time": "2017-03-27",
+                "step": "9"
+            },
+            {
+              "msg": "通过",
+              "count": "",
+              "status": "0",
+              "time": "2017-04-06",
+              "step": "4"
+            }
+        ]
+
+        /*
+        * ABS 项目进度创建流程图
+        * 还要考虑的是宿主对象，在这个环境下的话，就是点击的tr的下一个
+        * @tar: 宿主对象
+        * @data: 数据源
+        */
+        function ProProgress (tar, data){
+          this.data = data;
+          this.taregt = tar;
+          this.init();
+        }
+
+        var proFn = ProProgress.prototype;
+
+        // 初始化函数
+        proFn.init = function (){
+          this.buildProgress();
+        }
+
+        // 创建流程图——难道只需要这一个函数么？  如果是这样的话，就不需要写成一个类了，浪费资源
+        // 这边的本质是创建一个列表，然后在合适的时机加上active类，然后填充上数据即可
+        // 这样对吗？ 为什么我感觉会比我想象中的处理更简单一些呢？ 还是说有哪些地方是我没有考虑到的
+        // 宿主对象是谁？
+        proFn.buildProgress = function (){
+          var self = this;
+          // 首先是要转换成json格式的数据的
+          var curData = self.data;
+          var len = curData.length;
+
+          // 创建外部的容器
+          var divCon = $('<div class="container"></div>');
+          // 创建ul List
+          var ulList = $("<ul class='progressbar'></ul>");
+
+          // 假设是按照流程的顺序的，那么应该这么做
+          for (var i=0;i<len;i++){
+            // 创建的这个li最好是一个jQuery、对象，这样的话，才有利于改变内容0
+            var li = "";
+
+            // 如果判断的状态是1的话，则表示是完成状态，则加上active的样式
+            if (curData[i].status == 1){
+              li = $("<li class='active'><p>" + curData[i].msg + "</p><p>" + curData[i].time + "</p></li>");
+            }
+            else{
+              li = $("<li><p>" + curData[i].msg + "</p><p>" + curData[i].time + "</p></li>");
+            }
+
+            // 判断是否存在count的值，如果存在的话，就把这个值追加到第一个p节点中  但是这个先后的顺序应该怎么去考虑呢？ 难道是在每个判断的条件中再去执行判断吗？
+            // 这样肯定是的行的，但是效率问题，，，不太好吧
+            // 不对，不用在内部进行判断，因为，这两个是不相关的变量，控制的不是同一个东西，所以理所当然可以分开判断的
+            if (curData[i].count != ""){
+              var countStr = "<i>(" + curData[i].count + ")</i>";
+              li.find('p:eq(0)').append(countStr);
+            }
+
+            li.appendTo(ulList);
+          }
+
+          divCon.append(ulList);
+          console.log(divCon);
+        // self.taregt.insertAfter(ulList);
+          $('.testDiv').append(divCon);
+        }
+
+        // 其实准确来说是要去计算外部容器长宽,根据所含的数据的个数
+        //  但是应该是怎么样的一个计算额准则呢？
+        proFn.dealSize = function (){
+
+        }
+
+        //  处理数据
+        proFn.dealData = function (){
+
+        }
+
+        $('#btn').on('click', function (e){
+          var ele = $(e.target);
+          new ProProgress(ele, fakeData);
+        });
+      });
+    </script>
+  </body>
+</html>
