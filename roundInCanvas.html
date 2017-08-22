@@ -164,7 +164,7 @@
 
     <!-- 下面的代码用来绘制渐变颜色表格 -->
     <script type="text/javascript">
-    // var ctx = document.getElementById('canvas2').getContext('2d');
+    var ctx = document.getElementById('canvas2').getContext('2d');
     function drawRectGrid() {
       for (var i=0;i<6;i++){
         for (var j=0;j<6;j++){
@@ -233,7 +233,7 @@
       ctx.restore();
     }
 
-    // draw();
+    draw();
     function drawStar (){
          ctx3.beginPath(); //开始路径
          for (var i = 0; i < 5; i++) {
@@ -243,6 +243,7 @@
          ctx3.fillStyle = fillColor;
          ctx3.fill();
     }
+	drawStar()
     </script>
   </body>
 </html>

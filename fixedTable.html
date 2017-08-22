@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>DataTable</title>
+        <link href="css/datatable.css" rel="stylesheet">
+        <style type="text/css">
+
+
+
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="datatable">
+                <div class="dt-header">
+                </div><!--独立header的时候使用或者此方案不再使用-->
+                <div class="dt-body"><!--宽度来自datatable-->
+                    <!--
+                        需要一个固定宽度
+                        将th的各个宽度累计到此父容器上
+                    -->
+                    <div class="dt-fixed-header-column">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-field="$index" width="200px">Index</th>
+                                    <th data-field="id" width="300px">ID</th>
+                                    <th data-field="name" width="300px">姓名</th>
+                                    <th data-field="sex" width="100px">性别</th>
+                                    <th data-field="address" width="100px">地址</th>
+                                    <th data-field="email" width="300px">邮箱</th>
+                                    <th width="200px">操作</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>  <!-- 角上固定的一个head -->
+                    <div class="dt-fixed-header">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-field="$index" width="200px">Index</th>
+                                    <th data-field="id" width="300px">ID</th>
+                                    <th data-field="name" width="300px">姓名</th>
+                                    <th data-field="sex" width="100px">性别</th>
+                                    <th data-field="address" width="100px">地址</th>
+                                    <th data-field="email" width="300px">邮箱</th>
+                                    <th width="200px">操作</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>   <!-- 固定一整行header -->
+                    <div class="dt-fixed-column">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-field="$index" width="200px">Index</th>
+                                    <th data-field="id" width="300px">ID</th>
+                                    <th data-field="name" width="300px">姓名</th>
+                                    <th data-field="sex" width="100px">性别</th>
+                                    <th data-field="address" width="100px">地址</th>
+                                    <th data-field="email" width="300px">邮箱</th>
+                                    <th width="200px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{2}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>   <!-- 左侧固定的一列 -->
+                    <div class="dt-body-list">  <!-- main-table -->
+                        <table style="width:1500px">
+                            <thead>
+                                <tr>
+                                    <th data-field="$index" width="200px">Index</th>
+                                    <th data-field="id" width="300px">ID</th>
+                                    <th data-field="name" width="300px">姓名</th>
+                                    <th data-field="sex" width="100px">性别</th>
+                                    <th data-field="address" width="100px">地址</th>
+                                    <th data-field="email" width="300px">邮箱</th>
+                                    <th width="200px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{2}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{id}}</td>
+                                    <td>{{name}}</td>
+                                    <td>{{sex}}</td>
+                                    <td>11111</td>
+                                    <td>{{email}}</td>
+                                    <td>22222</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--分页-->
+                <div class="dt-footer"></div>
+            </div>
+        </div>
+
+
+        <table id="tar" width="">
+            <thead>
+                <tr>
+                    <th data-field="$index" width="200px">Index</th>
+                    <th data-field="id" width="300px">ID</th>
+                    <th data-field="name" width="300px">姓名</th>
+                    <th data-field="sex" width="100px">性别</th>
+                    <th data-field="address" width="100px">地址</th>
+                    <th data-field="email" width="300px">邮箱</th>
+                    <th width="200px">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{1}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{2}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+                <tr>
+                    <td>{{$index}}</td>
+                    <td>{{id}}</td>
+                    <td>{{name}}</td>
+                    <td>{{sex}}</td>
+                    <td>11111</td>
+                    <td>{{email}}</td>
+                    <td>22222</td>
+                </tr>
+            </tbody>
+        </table>
+        <script src="js/jquery-2.2.1.min.js"></script>
+        <script type="text/javascript">
+        // 先用jQuery实现一遍，然后再用原生JS写一遍
+        $(function (){
+          var fakeData = {
+            "data":[
+              {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "2",
+                "id": "1002",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "3",
+                "id": "1003",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "4",
+                "id": "1004",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "5",
+                "id": "1005",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }, {
+                "xh": "1",
+                "id": "1001",
+                "name": "Jame",
+                "gender": "male",
+                "address": "HangZhou",
+                "e-mail": "123@163.com",
+                "op": "1"
+              }
+            ]
+          }
+
+          var tarTableObj = $('#tar');
+          // 最先生成的应该是一张完整的table，然后以此table去拷贝生成其余的
+          function generateTable(){
+            var fixedHeaderColumn = tarTableObj.find('thead').clone();  // 这样的话，是需要自己创建thead的，但是同时也避免的，去除相同id的工作
+            var fixedHeaderColumnHtml = fixedHeaderColumn.html();
+            var tableHtml = "<div><table></table></div>";
+            console.log(fixedHeaderColumn);
+
+
+          }
+
+          generateTable();
+
+
+
+          var fixedHeader=$(".dt-fixed-header");
+          var fixedColumn=$(".dt-fixed-column");
+          var scrollBody=$(".dt-body-list");
+          scrollBody.on("scroll",function(e){
+              fixedHeader.scrollLeft(scrollBody.scrollLeft());
+              fixedColumn.scrollTop(scrollBody.scrollTop());
+          });
+
+
+        });
+        </script>
+    </body>
+</html>

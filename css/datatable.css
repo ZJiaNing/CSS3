@@ -1,0 +1,101 @@
+.datatable{
+    position:relative;
+    width:1224px;
+    height:200px;
+    background:#ddd;
+}
+/*.dt-loading{
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:none;
+    width:260px;
+    height:30px;
+    font-size:16px;
+    line-height:30px;
+    margin-top:-15px;
+    margin-left:-130px;
+    background:#333;
+    border-radius:3px;
+    color:#fff;
+    text-align:center;
+}*/
+.datatable table{
+    table-layout:fixed;
+    *table-layout:none;
+    border-collapse:collapse;
+    border:1px solid #39c;
+    width:100%;
+}
+.datatable table thead tr{
+    background:#66d7e2;
+    color:#fff;
+}
+.datatable table tr{
+    height:30px;
+}
+.datatable table tbody tr:hover{
+    background:#7CC6E7;
+}
+.datatable table td,.datatable table th{
+    border:1px solid #39c;
+    text-align:center;
+}
+.dt-body-list{
+    width:100%;
+    height:100%;
+    overflow:auto;
+    /*
+        position: relative;
+        top:-245px;/* 加上底部滚动条的高度
+    */
+    position:absolute;
+    left: 0;
+    top:0;
+}
+.dt-fixed-header-column{
+    position:relative;
+    top:0;
+    left:0;
+    z-index:110;
+    width:204px;/*单元格需要显示的宽度*/
+    overflow:hidden;
+    background:#ddd;
+}
+.dt-fixed-header{
+    /*
+        position:absolute;
+        top:0;
+    */
+    position:relative;
+    top:-31px;
+    left:0;
+    z-index:100;
+    height:31px;
+    width:1207px;/*需要显示右侧的滚动条·*/
+    overflow:hidden;
+}
+.dt-fixed-header-column,
+.dt-body-list table thead{
+    height:31px;
+}
+.dt-fixed-column{
+    /*
+        position:absolute;
+        top:0;
+    */
+    position:relative;
+    top: -62px;
+    left:0;
+    width:204px;
+    overflow:hidden;
+    z-index:102;
+    height:183px;
+    background:#fff;
+}
+/*
+    采用绝对布局方式可以不用进行相对位置的计算
+
+    滚动条宽度获取
+    滚动条高度获取
+*/
