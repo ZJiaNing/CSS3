@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Default functionality</title>
+  <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+  <style>
+  *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  .container{
+    width: 1400px;
+    margin: 0 auto;
+  }
+  .container::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+  }
+  .column{
+    width:50%;
+    min-height:300px;
+    background:#fff;
+    float:left;
+  }
+  .column .dragbox{
+      margin:5px 8px 20px;
+      background:#fff;
+      position:relative;
+      border:1px solid #ddd;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+  }
+  .column .dragbox h2{
+      margin:0;
+      font-size:12px;
+      padding:5px;
+      background:#f0f0f0;
+      color:#000;
+      border-bottom:1px solid #eee;
+      font-family:Verdana;
+      cursor:move;
+  }
+  .dragbox-content{
+      background:#fff;
+      min-height:100px; margin:5px;
+      font-family:'Lucida Grande', Verdana; font-size:0.8em; line-height:1.5em;
+  }
+  .column  .placeholder{
+      /*background: #f0f0f0;*/
+      background-color: red;
+      border:1px dashed #ddd;
+  }
+  .dragbox h2.collapse{
+      background:#f0f0f0 url('collapse.png') no-repeat top rightright;
+  }
+  .dragbox h2 .configure{
+      font-size:11px; font-weight:normal;
+      margin-right:30px; float:rightright;
+  }
+  </style>
+  <script src="js/jquery-2.2.1.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
+  <script>
+  $(function (){
+    $('.column').sortable({
+      connectWith: '.column',
+      handle: 'h2',
+      cursor: 'move',
+      placeholder: 'placeholder',
+      forcePlaceholderSize: true,
+      opacity: 0.4,
+    })
+    .disableSelection();
+  });
+  </script>
+</head>
+<body>
+<div class="container">
+  <div class="column" id="column1">
+      <div class="dragbox" id="item1" >
+          <h2>Handle 1</h2>
+          <div class="dragbox-content" >
+            <h1>This is item one.</h1>
+          </div>
+      </div>
+      <div class="dragbox" id="item2" >
+          <h2><span class="configure" ><a href="#" >Configure</a></span>Handle 2</h2>
+          <div class="dragbox-content" >
+              <h1>This is item two.</h1>
+          </div>
+      </div>
+      <div class="dragbox" id="item3" >
+          <h2>Handle 3</h2>
+          <div class="dragbox-content" >
+              <h1>This is item three.</h1>
+          </div>
+      </div>
+  </div>
+  <div class="column" id="column2" >
+      <div class="dragbox" id="item4" >
+          <h2>Handle 4</h2>
+          <div class="dragbox-content" >
+              <h1>This is item four.</h1>
+          </div>
+      </div>
+      <div class="dragbox" id="item5" >
+          <h2>Handle 5</h2>
+          <div class="dragbox-content" >
+              <h1>This is item five.</h1>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>
