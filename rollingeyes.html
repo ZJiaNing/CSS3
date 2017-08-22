@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>眼珠转动的小怪物</title>
+    <style media="screen">
+      .beastainer{
+        position: relative;
+        padding: 20px 0 20px 20px;
+      }
+      .beastainer .eye-left{
+        left: 125px;
+        top: 65px;
+        -webkit-animation-name: moveleft;
+        animation-name: moveleft;
+      }
+      .beastainer .eye-right{
+        left: 231px;
+        top: 68px;
+        animation-name: moveright;
+      }
+      .beastainer .eye-left, .beastainer .eye-right{
+        position: absolute;
+        -webkit-animation-delay: 6s;
+        animation-delay: 6s;
+        -webkit-animation-duration: 7s;
+        animation-duration: 7s;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-play-state: running;
+        animation-play-state: running;
+      }
+      /* 动画效果 */
+      @keyframes moveleft {
+        0%,100%,70% {
+            left: 125px;
+            top: 65px
+        }
+
+        10%,20% {
+            left: 118px;
+            top: 56px
+        }
+
+        40% {
+            left: 148px;
+            top: 62px
+        }
+
+        50% {
+            left: 145px;
+            top: 72px
+        }
+
+        60% {
+            left: 121px;
+            top: 70px
+        }
+      }
+      @keyframes moveright {
+        0%,100%,70% {
+            left: 231px;
+            top: 68px
+        }
+
+        10%,20% {
+            left: 212px;
+            top: 62px
+        }
+
+        40% {
+            left: 239px;
+            top: 64px
+        }
+
+        50% {
+            left: 240px;
+            top: 80px
+        }
+
+        60% {
+            left: 215px;
+            top: 73px
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="beastainer">
+      <img class="eye-left" src="images/beast-404_LE.f1435cace4b4.png" alt="">
+      <img class="eye-right" src="images/beast-404_RE.2e53f96c5abb.png" alt="">
+      <img src="images/beast-404.ce38fcf80386.png" alt="">
+    </div>
+
+
+  </body>
+</html>
