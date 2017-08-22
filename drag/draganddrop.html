@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>jQuery UI Draggable - Default functionality</title>
-  <link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.theme.min.css">
   <style>
   *{
     box-sizing: border-box;
@@ -63,14 +63,16 @@
       margin-right:30px; float:rightright;
   }
   </style>
-  <script src="js/jquery-2.2.1.min.js"></script>
-  <script src="js/jquery-ui.min.js"></script>
+  <script src="../js/jquery-2.2.1.min.js"></script>
+  <script src="../js/jquery-ui.min.js"></script>
   <script>
   $(function (){
     $('.column').sortable({
       connectWith: '.column',
       handle: 'h2',
+      helper: "clone",
       cursor: 'move',
+      revert: true,   // 使得释放失败的drag obj回到原先的位置
       placeholder: 'placeholder',
       forcePlaceholderSize: true,
       opacity: 0.4,

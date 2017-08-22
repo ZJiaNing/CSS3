@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <link rel="stylesheet" href="../css/jquery-ui.theme.min.css">
+    <style media="screen">
+      *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      .container{
+        width: 1400px;
+        margin: 0 auto;
+        height: auto
+      }
+      .column{
+        width: 100%;
+      }
+      .column::after{
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .column .item{
+        position: relative;
+        width: 50%;
+        background-color: white;
+        height: auto;
+        float: left;
+        cursor: move;
+      }
+      .column .item .content{
+        margin: 10px;
+        border: 1px solid #ddd;
+        min-height: 100px;
+      }
+      .column h2{
+        background: pink;
+        border-bottom: 1px solid silver;
+      }
+      .column .placeholder{
+        background-color: lightyellow;
+        border: 1px solid silver;
+        width: 50%;
+        position: absolute;
+      }
+      .column .item .down-drop-handler{
+        position: absolute;
+        top: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background-color: transparent;
+        margin: 0 10px 10px 10px;
+      }
+      .column .item .up-drop-handler{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background-color: transparent;
+        margin: 10px 10px 0 10px;
+      }
+      .column .item .up-drop-handler.active, .column .item .down-drop-handler.active{
+        background-color: rgba(61,115,239, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+  <!-- 这个如果要用在两列布局上会更好一点的 -->
+  <div class="container">
+    <div class="column" id="column1">
+      <div class="item dragbox" id="item1">
+        <div class="content">
+          <h2>Handle 1</h2>
+          <h1>This is content one</h1>
+        </div>
+        <div class="up-drop-handler"></div>
+        <div class="down-drop-handler"></div>
+      </div>
+      <div class="item dragbox" id="item2">
+        <div class="content">
+          <h2>Handle 2</h2>
+          <h1>This is content two</h1>
+        </div>
+        <div class="up-drop-handler"></div>
+        <div class="down-drop-handler"></div>
+      </div>
+      <div class="item dragbox" id="item3">
+        <div class="content">
+          <h2>Handle 3</h2>
+          <h1>This is content three</h1>
+        </div>
+        <div class="up-drop-handler"></div>
+        <div class="down-drop-handler"></div>
+      </div>
+      <div class="item dragbox" id="item4">
+        <div class="content">
+          <h2>Handle 4</h2>
+          <h1>This is content four</h1>
+        </div>
+        <div class="up-drop-handler"></div>
+        <div class="down-drop-handler"></div>
+      </div>
+      <div class="item dragbox" id="item5">
+        <div class="content">
+          <h2>Handle 5</h2>
+          <h1>This is content five</h1>
+        </div>
+        <div class="up-drop-handler"></div>
+        <div class="down-drop-handler"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery-2.2.1.min.js"></script>
+  <script src="../js/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    $(function (){
+      var isDragging = false;
+
+      $('.dragbox').draggable({
+        connectWith: '.column',
+        cursor: 'move',
+        helper: 'clone',
+        // revert: true,           // 这个的用法是，当drop的容器接收失败的时候，就使得其回到原位的位置
+        placeholder: 'placeholder',
+        forcePlaceholderSize: true,
+        opacity: 0.4,
+        drag: function (event, ui){
+          // 拖拽中
+        },
+        start: function (event, ui){
+          // 拖拽开始
+          isDragging = true;
+        },
+        stop: function (event, ui){
+          // 拖拽结束
+          isDragging = false;
+        }
+      });
+
+      $('.up-drop-handler').droppable({
+        accept: '.dragbox',
+        tolerance: 'pointer',
+        over: function (event, ui){
+          // 拖拽中，拖拽在释放容器的上面时
+          var obj = this;
+          dragHandler(event, ui, true, obj);
+        },
+        drop: function (event, ui){
+          var obj = this;
+          droppedHanlde(event, ui, true, this);
+        },
+        out: function (event, ui){
+          var obj = this;
+          dragOutHandler(event, ui, true, obj);
+        }
+      });
+
+
+      $('.down-drop-handler').droppable({
+        accept: '.dragbox',
+        tolerance: 'pointer',
+        over: function (event, ui){
+          // 拖拽中，拖拽在释放容器的上面时
+          var obj = this;
+          dragHandler(event, ui, false, obj)
+        },
+        drop: function (event, ui){
+          var obj = this;   // 当前准备释放的对象容器
+          droppedHanlde(event, ui, false, obj);
+        },
+        out: function (event, ui){
+          var obj = this;
+          dragOutHandler(event, ui, false, obj);
+        }
+      });
+
+      // @flag: 为true则拖动到组件的上方, 为false则拖动到组件的下方
+      function droppedHanlde(event, ui, flag, obj){
+        var dropObj = $(obj);
+        var releaseObj = dropObj.parent('.dragbox');
+
+        var draggable = ui.draggable;
+
+        // 为什么这两个函数的显示颜色是不一样的呢？
+        if (flag){
+          draggable.insertBefore(releaseObj);
+          dropObj.removeClass('active');
+          console.log('up');
+        }
+        else{
+          draggable.insertAfter(releaseObj);
+          dropObj.removeClass('active');
+          console.log('down');
+        }
+      }
+
+      //  拖拽过程中的交互
+      function dragHandler(event, ui, flag, obj) {
+        var dropObj = $(obj);
+        if (flag){
+          dropObj.addClass('active');
+        }
+        else{
+          dropObj.addClass('active');
+        }
+      }
+
+      function dragOutHandler(event, ui, flag, obj){
+        var dropObj = $(obj);
+        if (flag){
+          dropObj.removeClass('active');
+        }
+        else{
+          dropObj.removeClass('active');
+        }
+      }
+
+    });
+  </script>
+  </body>
+</html>
