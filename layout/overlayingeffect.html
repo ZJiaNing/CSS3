@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>div区块的边缘重影效果</title>
+    <style media="screen">
+      body{
+        background-color: whitesmoke;
+      }
+      .item{
+        position: relative;
+        float: left;
+        width: 229px;
+        height: 196px;
+        margin-left: 48px;
+        background-color: white;
+      }
+      .item::before{
+        z-index: -1;
+        right: -3px;
+        bottom: -3px;
+      }
+      .item::after{
+        z-index: -2;
+        right: -6px;
+        bottom: -6px;
+      }
+      .item::before, .item::after{
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        display: block;
+        box-shadow: 0 0 1px 1px #cccccc;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </body>
+</html>
