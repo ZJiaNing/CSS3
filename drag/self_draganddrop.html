@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>测试拖拽功能</title>
+    <link rel="stylesheet" href="abscommon.css">
+    <style media="screen">
+      *{
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+      }
+      .container{
+        width: 960px;
+        height: 300px;
+        background-color: pink;
+      }
+      body{
+        background-color: white;
+      }
+      ul{
+        list-style: none;
+      }
+      ul::after{
+        clear:both;
+        content:'';
+        display:block;width: 0;height: 0;
+      }
+      ul li{
+        display: list-item;
+        float: left;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        margin: 0 10px;
+        text-align: center;
+        background-color: grey;
+      }
+      .sortable-placeholder{
+          width: 100px;
+          height: 100px;
+          background-color: pink;
+          border: 1px dashed grey;
+          float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <ul id="dragMe">
+        <li draggable="true">111</li>
+        <li draggable="true">222</li>
+        <li draggable="true">333</li>
+        <li draggable="true">444</li>
+        <li draggable="true">555</li>
+        <li draggable="true">666</li>
+        <li draggable="true">777</li>
+      </ul>
+    </div>
+
+    <style media="screen">
+      .tip-dialog{
+        width: 423px;
+        height: 168px;
+        background-color: #1d222a;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #e8e8e8;
+      }
+      .tip-dialog-head{
+        height: 40px;
+        line-height: 40px;
+        background-color: #242c39;
+        font-size: 16px;
+      }
+      .tip-dialog-head p{
+        text-indent: 15px;
+      }
+      .tip-dialog-body{
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+      }
+      .tip-dialog-foot{
+        text-align: center;
+      }
+      .tip-dialog-foot span{
+        display: inline-block;
+        padding: 5px 20px;
+        margin: 0 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .tip-dialog-foot span:first-child{
+          border: 1px solid #4a4e55;
+      }
+      .tip-dialog-foot span:last-child{
+          background-color: #3d73ce;
+      }
+    </style>
+    <div class="tip-dialog">
+      <div class="tip-dialog-head">
+        <p class="title">提示</p>
+      </div>
+      <div class="tip-dialog-body">
+        <p>是否保存当前方案</p>
+      </div>
+      <div class="tip-dialog-foot">
+        <span>取消</span>
+        <span>确定</span>
+      </div>
+    </div>
+
+    <style media="screen">
+      .condition-dialog{
+        width: 300px;
+        height: 152px;
+        background-color: #1d222a;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #e8e8e8;
+        margin-left: 100px;
+        margin-top:10px;
+      }
+      .condition-dialog .dialog-head{
+        position:relative;
+      }
+      .condition-dialog .dialog-head p{
+        display: inline-block;
+        line-height: 45px;
+        height: 45px;
+        padding-left: 10px;
+      }
+      .condition-dialog .dialog-head i{
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        background-image: url(close_h.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-top: 11px;
+        margin-right: 15px;
+        line-height: 45px;
+        cursor: pointer;
+      }
+      .condition-dialog .dialog-body{
+        padding: 0 20px;
+        display: flex;
+        flex-flow: row nowrap;
+        margin-bottom: 10px;
+      }
+      .condition-dialog .dialog-body  input[type="text"]{
+        width: 50%;
+        border: 0;
+        outline: 0;
+        background-color: #2b3443;
+        height: 22px;
+        margin: 15px;
+        color: #fff;
+        text-indent: .5em;
+      }
+      .condition-dialog .dialog-foot{
+        padding: 0 35px;
+        text-align: right;
+      }
+      .condition-dialog .dialog-foot span{
+        border: 1px solid #4a4e55;
+        border-radius: 4px;
+        padding: 4px 15px;
+        cursor: pointer;
+      }
+      .condition-dialog .dialog-foot span:first-child{
+        border-color: transparent;
+        background-color: #3d73ce;
+      }
+
+    </style>
+    <div class="condition-dialog">
+      <div class="dialog-head">
+        <p><span>次级占比(%)</span>设定</p>
+        <i></i>
+      </div>
+      <div class="dialog-body">
+        <input type="text" name="" value="">
+        <input type="text" name="" value="">
+      </div>
+      <div class="dialog-foot">
+        <span class="condition-sure">确定</span>
+        <span class='condition-cancel'>取消</span>
+      </div>
+    </div>
+
+    <script src="jquery-2.2.1.min.js"></script>
+    <script type="text/javascript">
+    $(function (){
+      var dragLiObj = document.querySelectorAll('#dragMe li');
+      var dragging;
+      var placeholders = $();
+      var placeholder = $("<div class='sortable-placeholder'></div>");
+      var dragIndex;
+      var dragItems;
+      // function dragMe (){
+      items = $('#dragMe li');
+      dragItems = items;
+      placeholders = placeholders.add(placeholder);
+      items.on('dragstart', dragStartEvent);
+      items.on('dragend', dragEndEvent);
+      // items.not("a[href],img").on('selectstart', function (){
+      //
+      // });
+      items.end().add([$('#dragMe'), placeholder]).on('dragover dragenter drop', dragHandler);
+      // }
+      // 拖动事件
+      function dragStartEvent (e){
+        e.originalEvent.dataTransfer.effectAllowed = "move";
+        var item = $(e.target);
+
+        dragIndex = (dragging=item).addClass('sortable-dragging').index();
+        console.log('the index of the drag obj is: ' + dragIndex);
+      }
+
+      // 拖动结束的函数
+      function dragEndEvent (){
+        dragging.removeClass('sortable-dragging').show();
+        placeholders.detach();
+
+        if (dragIndex != dragging.index()){
+          console.log('sortupdate: ' + dragging.index());
+        }
+      }
+
+      // 其余事件处理中心
+      function dragHandler (e){
+        if (e.type == "drop"){
+          e.stopPropagation();
+          placeholders.filter(":visible").after(dragging);
+          dragging.trigger('dragend');
+          return false;
+        }
+        e.preventDefault();
+        e.originalEvent.dataTransfer.effectAllowed = "move";
+        var item = $(e.target);
+        if (dragItems.is(item)){
+          dragging.hide();
+          item[placeholder.index()<item.index()?"after":"before"](placeholder);
+          placeholders.not(placeholder).detach();
+        }
+      }
+
+      // dragMe();
+    });
+    </script>
+  </body>
+</html>
